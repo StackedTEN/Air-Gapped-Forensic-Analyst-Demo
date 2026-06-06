@@ -21,7 +21,9 @@ from afa.package import load_package, verify_package
 from afa.brief import build_brief, render_brief
 from afa.rootcause import build_reconstruction
 from afa.tools import (browser_history, filesystem_timeline, list_autoruns, map_attack,
-                       scheduled_tasks, timeline, prefetch_execution, shimcache_entries, wmi_persistence)
+                       scheduled_tasks, timeline, prefetch_execution, shimcache_entries, wmi_persistence,
+                       detect_lolbins, analyze_command_intent, detect_lineage_anomalies,
+                       detect_antiforensics, detect_timestomping)
 from afa.providers import get_provider
 
 SAMPLE = os.path.join(ROOT, "examples", "sample-collection")
@@ -43,7 +45,10 @@ case = {
         "persistence": autoruns["items"], "tasks": scheduled_tasks(ev)["items"],
         "events": timeline(ev)["items"], "prefetch": prefetch_execution(ev)["items"],
         "shimcache": shimcache_entries(ev)["items"], "filesystem": filesystem_timeline(ev)["items"],
-        "browser": browser_history(ev)["items"], "wmi": wmi_persistence(ev)["items"]},
+        "browser": browser_history(ev)["items"], "wmi": wmi_persistence(ev)["items"],
+        "lolbins": detect_lolbins(ev)["items"], "command_intent": analyze_command_intent(ev)["items"],
+        "lineage": detect_lineage_anomalies(ev)["items"], "antiforensics": detect_antiforensics(ev)["items"],
+        "timestomp": detect_timestomping(ev)["items"]},
 }
 
 planner = get_provider("offline")

